@@ -1,12 +1,19 @@
 <?php 
 class Max
 {
-    public function getSecondMax($arr)
-    {
-        $max = $arr[0];
-        $secondMax = $arr[0]; 
+    public $arr;
 
-        foreach ($arr as $int) {
+    function __construct($arr)
+    {
+        $this->arr = $arr;
+    }
+
+    public function getSecondMax()
+    {
+        $max = $this->arr[0];
+        $secondMax = $this->arr[0]; 
+
+        foreach ($this->arr as $int) {
             if ($int > $max) {
                 $secondMax = $max;
                 $max = $int;
@@ -17,8 +24,8 @@ class Max
     }
 }
 
-$arr = [4, 3, 2, 10, 111, 555];
+$arr = [4, 3, 2, 10, 111, 555, 777];
 
-$obj = new Max;
+$obj = new Max($arr);
 
-var_dump($obj->getSecondMax($arr));
+var_dump($obj->getSecondMax());

@@ -4,22 +4,26 @@ class ArrayMethod
     public function mySortArray($arr)
     { 
         $arrCount = count($arr);
+        $unsort = true;
 
         if ($arrCount <= 1 ) {
             echo "Введите массив минимум с 2 числами";
             return false;
         }
 
-        $resCount = ($arrCount - 1);
+        while ($unsort) {
+            $unsort = false;
 
-        foreach ($arr as $int) {      
-            for ($i = 0; $i < $resCount; $i++) {
+            for ($i = 0; $i < $arrCount - 1; $i++) {
                 if ($arr[$i] > $arr[$i + 1]) {       
                     $buf = $arr[$i];
                     $arr[$i] = $arr[$i + 1];
-                    $arr[$i + 1] = $buf;        
+                    $arr[$i + 1] = $buf;
+                    $unsort = true;        
                 }
-            }      
+            }
+
+            $arrCount--;      
         }
 
         return $arr;
